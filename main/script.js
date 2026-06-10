@@ -1,5 +1,5 @@
 // your WeatherAPI key
-const WEATHER_API_KEY = "YOUR_KEY_HERE";
+const WEATHER_API_KEY = "584d76eb9a244805a5611807261602";
 
 // get zip from URL
 const params = new URLSearchParams(window.location.search);
