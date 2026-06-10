@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Select ZIP</title>
+  <script>
+    const zip = prompt("Enter your ZIP code:");
+    if (zip) {
+      window.location.href = "../main/?zip=" + encodeURIComponent(zip);
+    } else {
+      document.write("No ZIP entered.");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
