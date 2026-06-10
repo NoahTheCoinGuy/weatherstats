@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eef4ff;
+  padding: 20px;
+  color: #002244;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+#zip {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+#status {
+  font-size: 1.2rem;
+}
+
+#pressure {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+#updated {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
