@@ -10,6 +10,7 @@ document.getElementById("zip").textContent = "ZIP Code: " + zip;
 async function loadPressure() {
   const statusEl = document.getElementById("status");
   const pressureEl = document.getElementById("pressure");
+  const tempEl = document.getElementById("pressure");
   const updatedEl = document.getElementById("updated");
 
   statusEl.textContent = "Loading data...";
@@ -26,14 +27,18 @@ async function loadPressure() {
 
     const pressureIn = data.current.pressure_in;
     const pressureMb = data.current.pressure_mb;
+    const tempF = data.current.temp_f;
+    const tempC = data.current.temp_c;
     const lastUpdated = data.current.last_updated;
 
     statusEl.textContent = "Current pressure:";
-    pressureEl.textContent = `${pressureIn} inHg (${pressureMb} mb)`;
+    pressureEl.textContent = `${pressureIn} inHg [${pressureMb} mb]`;
+    pressureEL.textContent = `${tempF}F [${tempC}C]`
     updatedEl.textContent = "Last updated: " + lastUpdated;
   } catch (err) {
     statusEl.textContent = "Failed to load data.";
     pressureEl.textContent = err.message;
+    tempEl.textContent = err.message;
     updatedEl.textContent = "";
   }
 }
