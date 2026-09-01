@@ -1,19 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Weather Stats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Weather Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Weather Stats</h1>
 
-  <p id="zip"></p>
-  <p id="status">Loading data...</p>
-  <p id="pressure"></p>
-  <p id="temperature"></p>
-  <p id="updated"></p>
+  <header class="top-header">
+    <h1>Apple Valley Weather</h1>
+    <p class="subtitle">Powered by WeatherAPI</p>
+  </header>
 
-  <script src="script.js"></script>
+  <main class="dashboard">
+
+    <!-- CURRENT CONDITIONS -->
+    <section class="panel" id="current">
+      <h2>Current Conditions</h2>
+      <div id="current-content" class="panel-content"></div>
+    </section>
+
+    <!-- HOURLY FORECAST -->
+    <section class="panel" id="hourly">
+      <h2>Next 12 Hours</h2>
+      <div id="hourly-content" class="scroll-row"></div>
+    </section>
+
+    <!-- MULTI-DAY FORECAST -->
+    <section class="panel" id="forecast">
+      <h2>3‑Day Forecast</h2>
+      <div id="forecast-content" class="forecast-grid"></div>
+    </section>
+
+    <!-- LIVE PRESSURE MICRO CHART -->
+    <section class="panel" id="pressure">
+      <h2>Live Pressure</h2>
+
+      <div class="pressure-header">
+        <span id="pressure-value">--</span> mb
+        <span id="pressure-delta" class="delta">Δ --</span>
+        <span id="pressure-trend" class="trend">↔</span>
+      </div>
+
+      <canvas id="pressureChart" width="600" height="120"></canvas>
+      <p class="micro-note">Micro‑movement chart: 0.01 mb = 1 unit</p>
+    </section>
+
+    <!-- WIND DIRECTION COMPASS -->
+    <section class="panel" id="windCompass">
+      <h2>Wind Direction</h2>
+
+      <div class="compass-wrapper">
+        <img src="compass.svg" class="compass-base">
+        <div id="wind-needle" class="needle"></div>
+      </div>
+
+      <p id="wind-speed-display">-- mph</p>
+    </section>
+
+    <!-- AQI MICRO CHART -->
+    <section class="panel" id="aqi">
+      <h2>Air Quality Index</h2>
+
+      <div class="aqi-header">
+        <span id="aqi-value">--</span>
+        <span id="aqi-category">--</span>
+      </div>
+
+      <canvas id="aqiChart" width="600" height="120"></canvas>
+    </section>
+
+    <!-- HUMIDITY BAR -->
+    <section class="panel" id="humidity">
+      <h2>Humidity</h2>
+
+      <div class="humidity-bar">
+        <div id="humidity-fill"></div>
+      </div>
+
+      <p id="humidity-value">--%</p>
+    </section>
+
+    <!-- UV METER -->
+    <section class="panel" id="uv">
+      <h2>UV Index</h2>
+
+      <div class="uv-meter">
+        <div id="uv-level"></div>
+      </div>
+
+      <p id="uv-value">--</p>
+    </section>
+
+    <!-- RAIN SPARKLINE -->
+    <section class="panel" id="rain">
+      <h2>Rain Probability</h2>
+      <canvas id="rainSpark" width="600" height="80"></canvas>
+    </section>
+
+    <!-- SYSTEM HEARTBEAT -->
+    <section class="panel" id="system">
+      <h2>System Status</h2>
+
+      <div id="heartbeat" class="heartbeat"></div>
+      <p id="last-update">Last update: --</p>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="panel" id="settings">
+      <h2>Settings</h2>
+
+      <div class="settings-grid">
+
+        <label>
+          Temperature Unit:
+          <select id="tempUnit">
+            <option value="f">Fahrenheit</option>
+            <option value="c">Celsius</option>
+          </select>
+        </label>
+
+        <label>
+          Wind Speed:
+          <select id="windUnit">
+            <option value="mph">MPH</option>
+            <option value="kph">KPH</option>
+          </select>
+        </label>
+
+        <label>
+          Theme:
+          <select id="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </label>
+
+        <label>
+          Auto‑Refresh (ms):
+          <input id="refresh" type="number" min="5000" step="5000" value="60000">
+        </label>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Weather data from WeatherAPI.com</p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
